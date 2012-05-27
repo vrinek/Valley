@@ -15,6 +15,7 @@ java_import org.newdawn.slick.AppGameContainer
 
 
 require 'goblin.rb'
+require 'human.rb'
 
 class Valley < BasicGame
   VERSION = '0.0.1'
@@ -42,6 +43,8 @@ class Valley < BasicGame
       container.reinit
     when input.is_key_pressed(Input::KEY_G)
       @entities << Goblin.new(container)
+    when input.is_key_pressed(Input::KEY_H)
+      @entities << Human.new(container)
     end
 
     @entities.each{|e| e.update(delta)}
