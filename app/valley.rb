@@ -1,20 +1,27 @@
 $: << File.expand_path('../../lib', __FILE__)
+$: << File.expand_path('..', __FILE__)
 
 require 'java'
 require 'lwjgl.jar'
 require 'slick.jar'
 
 java_import org.newdawn.slick.BasicGame
+java_import org.newdawn.slick.Color
 java_import org.newdawn.slick.GameContainer
 java_import org.newdawn.slick.Graphics
 java_import org.newdawn.slick.Input
 java_import org.newdawn.slick.SlickException
 java_import org.newdawn.slick.AppGameContainer
 
+
+require 'goblin.rb'
+
 class Valley < BasicGame
   VERSION = '0.0.1'
 
   def render(container, graphics)
+    @entities.each{|e| e.render(graphics)}
+
     graphics.draw_string("Valley v#{VERSION} (ESC to exit)", 8, container.height - 30)
   end
 
@@ -22,12 +29,22 @@ class Valley < BasicGame
   # method prototype, it's good practice to fill out all necessary
   # methods even with empty definitions.
   def init(container)
+    @entities = []
   end
 
   def update(container, delta)
     # Grab input and exit if escape is pressed
     input = container.get_input
     container.exit if input.is_key_down(Input::KEY_ESCAPE)
+
+    case
+    when input.is_key_pressed(Input::KEY_R)
+      container.reinit
+    when input.is_key_pressed(Input::KEY_G)
+      @entities << Goblin.new(container)
+    end
+
+    @entities.each{|e| e.update(delta)}
   end
 end
 
