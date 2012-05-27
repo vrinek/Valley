@@ -11,9 +11,11 @@ java_import org.newdawn.slick.Input
 java_import org.newdawn.slick.SlickException
 java_import org.newdawn.slick.AppGameContainer
 
-class Demo < BasicGame
+class Valley < BasicGame
+  VERSION = '0.0.1'
+
   def render(container, graphics)
-    graphics.draw_string('JRuby Demo (ESC to exit)', 8, container.height - 30)
+    graphics.draw_string("Valley v#{VERSION} (ESC to exit)", 8, container.height - 30)
   end
 
   # Due to how Java decides which method to call based on its
@@ -29,6 +31,6 @@ class Demo < BasicGame
   end
 end
 
-app = AppGameContainer.new(Demo.new('SlickDemo'))
+app = AppGameContainer.new(Valley.new('Valley'))
 app.set_display_mode(640, 480, false)
 app.start
