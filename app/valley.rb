@@ -18,7 +18,7 @@ require 'goblin.rb'
 require 'human.rb'
 
 class Valley < BasicGame
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
 
   attr_reader :entities
 
