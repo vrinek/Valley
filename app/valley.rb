@@ -20,9 +20,12 @@ require 'human.rb'
 class Valley < BasicGame
   VERSION = '0.0.1'
 
+  attr_reader :entities
+
   def render(container, graphics)
     @entities.each{|e| e.render(graphics)}
 
+    graphics.draw_string("G for Goblin, H for Human", 8, container.height - 60)
     graphics.draw_string("Valley v#{VERSION} (ESC to exit)", 8, container.height - 30)
   end
 
@@ -42,11 +45,12 @@ class Valley < BasicGame
     when input.is_key_pressed(Input::KEY_R)
       container.reinit
     when input.is_key_pressed(Input::KEY_G)
-      @entities << Goblin.new(container)
+      @entities << Goblin.new(container, self)
     when input.is_key_pressed(Input::KEY_H)
-      @entities << Human.new(container)
+      @entities << Human.new(container, self)
     end
 
+    @entities.reject!{|e| e.dead?}
     @entities.each{|e| e.update(delta)}
   end
 end
