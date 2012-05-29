@@ -12,7 +12,12 @@ class Creature
     graphics.draw_oval(@x - true_perception/2, @y - true_perception/2,
                        true_perception, true_perception)
     graphics.draw_line(@x, @y, @x+Math.cos(@direction)*10, @y+Math.sin(@direction)*10)
+
     graphics.draw_string(@goal, @x, @y) if @goal
+
+    dir = "%.2f" % @direction
+    graphics.draw_string dir, @x, @y
+
 
     graphics.set_color(previous_color)
   end
