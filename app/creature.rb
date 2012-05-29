@@ -72,7 +72,7 @@ class Creature
     @y += (Math.sin(@direction) * @speed * @delta)
   end
 
-  def follow_goal
+  def follow_goal!
     nil
   end
 
