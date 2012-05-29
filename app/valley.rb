@@ -34,6 +34,8 @@ class Valley < BasicGame
   # methods even with empty definitions.
   def init(container)
     @entities = []
+    @entities += Array.new(20) { Goblin.new(container, self) }
+    @entities += Array.new(20) { Human.new(container, self) }
   end
 
   def update(container, delta)
