@@ -12,7 +12,11 @@ class Goblin < Monster
   private
 
   def follow_goal!
-    if can_see?(Human)
+    if can_see?(Giant)
+      @goal = "run away"
+      turn_away!(closest(Giant))
+      run!
+    elsif can_see?(Human)
       @goal = "attack!"
       attack!(closest(Human))
     end

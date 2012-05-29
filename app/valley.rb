@@ -16,6 +16,7 @@ java_import org.newdawn.slick.AppGameContainer
 
 require 'goblin.rb'
 require 'human.rb'
+require 'giant.rb'
 
 class Valley < BasicGame
   VERSION = '0.0.2'
@@ -34,6 +35,7 @@ class Valley < BasicGame
   # methods even with empty definitions.
   def init(container)
     @entities = []
+    @entities += Array.new(3) { Giant.new(container, self) }
     @entities += Array.new(20) { Goblin.new(container, self) }
     @entities += Array.new(20) { Human.new(container, self) }
   end
