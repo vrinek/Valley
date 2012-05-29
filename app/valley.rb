@@ -59,4 +59,5 @@ end
 
 app = AppGameContainer.new(Valley.new('Valley'))
 app.set_display_mode(640, 480, false)
+app.set_target_frame_rate(60)
 app.start
