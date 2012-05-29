@@ -1,6 +1,6 @@
-require 'creature.rb'
+require 'monster.rb'
 
-class Goblin < Creature
+class Goblin < Monster
   def initialize(*args)
     super(*args)
 

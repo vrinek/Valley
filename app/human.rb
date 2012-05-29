@@ -21,7 +21,7 @@ class Human < Creature
   def follow_goal!
     if in_danger?
       @goal = "run away"
-      turn_away!(closest(Goblin))
+      turn_away!(closest(Monster))
       run!
     end
   end
