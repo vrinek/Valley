@@ -38,6 +38,12 @@ class Creature
     @delta = delta / 1000.0 # convert delta from milliseconds to seconds
 
     follow_goal! || wander!
+
+    if @direction >= 2*Math::PI
+      @direction -= 2*Math::PI
+    elsif @direction < 0
+      @direction += 2*Math::PI
+    end
   end
 
   def take_damage(dmg)
