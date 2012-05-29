@@ -115,4 +115,17 @@ class Creature
   def turn_away!(target)
     @direction = (@x - target.x)/(target.y - @y)
   end
+
+  def attack!(target)
+    if in_range?(target)
+      hit!(target)
+    else
+      turn_towards!(target)
+      run!
+    end
+  end
+
+  def hit!(target)
+    target.take_damage(@power * @delta)
+  end
 end
