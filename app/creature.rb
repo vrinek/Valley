@@ -88,7 +88,7 @@ class Creature
   end
 
   def visible_entities
-    @game.entities.select{|e| distance_from(e) <= true_perception}
+    @game.entities.select{|e| distance_from(e) <= true_perception}.reject{|e| e == self}
   end
 
   def in_range?(target)
